@@ -1,0 +1,26 @@
+/* Hide Models section */
+.models {
+    display: none !important;
+}
+
+/* Remove bottom info section containing email, links, etc. */
+.footer {
+    display: none !important;
+}
+
+/* Hide specific swagger-ui components */
+.information-container .info__license,
+.information-container .info__contact {
+    display: none !important;
+}
+
+/* Optional: Clean up header spacing */
+.swagger-ui .information-container.wrapper {
+    padding: 0 0 20px 0;
+}
+
+/* Optional: Remove extra whitespace */
+.swagger-ui .scheme-container {
+    padding: 15px 0;
+    margin: 0;
+} 

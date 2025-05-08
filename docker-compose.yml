@@ -15,17 +15,21 @@ services:
       - db_data:/mysql-data-docker
 
   spring-boot:
-    image: music-app
+    image: maven:3.8.4-openjdk-8
+    working_dir: /app
+    command: bash -c "mvn clean spring-boot:run -DskipTests"
     restart: always
     depends_on:
       - docker-mysql
     ports:
       - 8081:8081
+    volumes:
+      - ./:/app
     environment:
       SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/db_musics?autoReconnect=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      APP_UPLOAD_DIR: /src/main/resources/static/images
+      APP_UPLOAD_DIR: /app/src/main/resources/static/images
     networks: 
       - backend
 
